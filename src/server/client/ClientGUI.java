@@ -1,5 +1,7 @@
 package server.client;
 
+import server.server.gui.ServerWindow;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,6 +11,7 @@ import java.awt.event.*;
  * Является абстракцией GUI
  */
 public class ClientGUI extends JFrame implements ClientView{
+    ServerWindow serverWindow;
     private static final int WIDTH = 400;
     private static final int HEIGHT = 300;
 
@@ -28,7 +31,8 @@ public class ClientGUI extends JFrame implements ClientView{
     /**
      * Конструктор класса
      */
-    public ClientGUI() {
+    public ClientGUI(ServerWindow serverWindow) {
+        this.serverWindow = serverWindow;
         setting();
         createPanel();
 
@@ -47,7 +51,7 @@ public class ClientGUI extends JFrame implements ClientView{
         setSize(WIDTH, HEIGHT);
         setResizable(false);
         setTitle("Chat client");
-//        setLocation(serverWindow.getX() - 500, serverWindow.getY());
+        setLocation(serverWindow.getX() - 500, serverWindow.getY());
         setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
